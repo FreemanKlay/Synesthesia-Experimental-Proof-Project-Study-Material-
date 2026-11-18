@@ -8,7 +8,7 @@
 
 This repository is a personal research sandbox exploring what happens when wave physics, evolutionary neural networks, real-time audio synthesis, and software rendering collide without external engines or heavy abstractions.
 
-Digital organisms inhabit a 2D pressure grid governed by wave equations. Without traditional vision, they rely on simulated acoustic sensors ("ears") and frequency emitters ("mouths") driven by custom SIMD-accelerated neural networks. Over generations, survival pressure forces emergent acoustic behaviors—such as echolocation, pack signaling, and active noise cancellation—to evolve from pure math.
+Digital organisms inhabit a 2D pressure grid governed by wave equations. Without traditional vision, they rely on simulated acoustic sensors ("ears") and frequency emitters ("mouths") driven by custom SIMD-accelerated neural networks. Over generations, survival pressure forces emergent acoustic behaviors, such as echolocation, pack signaling, and active noise cancellation, to evolve from pure math.
 
 ## Core Pillars
 
