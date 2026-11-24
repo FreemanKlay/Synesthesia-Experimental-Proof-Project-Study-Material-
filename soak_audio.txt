@@ -1,0 +1,3 @@
+WASAPI: 44100 Hz, 2 ch, buffer 1036 frames (23.5 ms), periodo 10.0 ms, latencia do stream 0.0 ms
+Tom 440.0 Hz | carga: 8 thread(s) | janela: nao | duracao fixa
+[     5s] callbacks=512 underruns=0 late=0 fila_min=3407

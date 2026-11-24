@@ -1,0 +1,19 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "mingw-release",
+      "displayName": "MSYS2 UCRT64 / MinGW Makefiles / Release",
+      "generator": "MinGW Makefiles",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" },
+      "environment": { "PATH": "C:/msys64/ucrt64/bin;$penv{PATH}" }
+    }
+  ],
+  "buildPresets": [
+    { "name": "mingw-release", "configurePreset": "mingw-release", "jobs": 8 }
+  ],
+  "testPresets": [
+    { "name": "mingw-release", "configurePreset": "mingw-release", "output": { "outputOnFailure": true } }
+  ]
+}
