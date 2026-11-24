@@ -1,7 +1,7 @@
 # SYNESTHESIA
 
 <p align="center">
-  <strong>Artificial Life & Computational Biology Research Experimental</strong>
+  <strong>Artificial Life & Computational Experimental Biology Research</strong>
 </p>
 
 <p align="center">
