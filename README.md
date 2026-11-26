@@ -1,267 +1,293 @@
 # SYNESTHESIA
 
 <p align="center">
-  <strong>Artificial Life & Computational Experimental Biology Research</strong>
+  <strong>Emergent Acoustic Communication Through Artificial Evolution</strong>
 </p>
 
 <p align="center">
-  An experimental platform exploring how physical, chemical, and evolutionary systems can give rise to organization, adaptation, communication, and life-like behavior.
+  An experimental C++20 research project investigating whether the physical fidelity of an acoustic environment changes the signals that evolve within artificial populations.
 </p>
 
 <p align="center">
-  <code>C++20</code> &nbsp;·&nbsp; <code>Scientific Computing</code> &nbsp;·&nbsp; <code>Artificial Life</code> &nbsp;·&nbsp; <code>Computational Biology</code>
+  <code>C++20</code> · <code>Computational Acoustics</code> · <code>Artificial Life</code> · <code>Evolutionary Computation</code>
 </p>
 
 ---
 
-## Overview
+## Research Question
 
-**Synesthesia** is an experimental research project investigating the emergence and evolution of complex living systems through computational simulation.
+**Does the physical fidelity of an acoustic medium change what evolves as a signal?**
 
-Its long-term objective is to build a modular artificial life laboratory in which physical environments, chemical interactions, genetic variation, and evolutionary pressures can produce increasingly complex forms of organization and behavior.
+Synesthesia is an experimental environment designed to investigate the evolution of acoustic communication in artificial populations.
 
-Rather than implementing predefined organisms, societies, or ecosystems, Synesthesia aims to establish the underlying mechanisms and environmental conditions from which such structures could emerge.
+Its central idea is to place artificial organisms inside a shared physical medium: a two-dimensional acoustic environment in which signals propagate, interact with boundaries, reflect from obstacles, and eventually reach other organisms through simulated hearing.
 
-The project begins with an acoustic simulation environment, where digital organisms will eventually interact through physically simulated sound propagation, perception, and communication. Its broader research direction extends toward protocellular systems, evolutionary dynamics, computational models of biological quantum phenomena, and multiscale artificial ecosystems.
+There is no privileged communication channel between organisms. Information must travel through the environment itself.
 
-Synesthesia is being developed incrementally, with an emphasis on reproducibility, measurable experiments, performance, and scientific transparency.
+The research focuses on whether increasingly realistic models of acoustic propagation change the signals that emerge under evolutionary pressure.
 
-> **The central question:** Under what conditions can relatively simple systems develop increasingly complex forms of organization, interaction, adaptation, and evolution?
+Rather than treating communication as a predefined behavior, Synesthesia aims to create conditions in which producing, perceiving, and responding to acoustic signals can become evolutionarily advantageous.
 
-## Research Vision
+The project is built around controlled comparisons, reproducible experiments, physical validation, and measurable outcomes.
 
-Synesthesia is organized around several interconnected research domains.
+## The Experiment
 
-### 01. Acoustic World
+The primary experiment compares different levels of acoustic-medium fidelity while keeping the biological and ecological conditions controlled.
 
-An experimental environment for investigating the emergence and evolution of communication.
+The central comparison is an acoustic fidelity ladder, designated **L0–L3**.
 
-- Physical acoustic wave propagation.
-- Environmental reflection and energy dissipation.
-- Artificial sensory systems and sound perception.
-- Evolving signal production and communication.
-- Learning, adaptation, and behavioral responses.
-- Potential emergence of cooperative and competitive signaling.
-
-The objective is to investigate whether meaningful communication can emerge from evolutionary pressures rather than predefined communication protocols.
-
-### 02. Microbial World
-
-A computational environment inspired by early biological and prebiotic systems.
-
-- Virtual molecular interactions.
-- Autocatalytic reaction networks.
-- Membrane-like compartments.
-- Energy and concentration gradients.
-- Metabolic organization.
-- Compartment growth and division.
-- Hereditary information and replication errors.
-- Competition and selection between protocellular systems.
-
-This domain aims to investigate conditions under which non-living chemical models can develop properties associated with self-maintenance, reproduction, and Darwinian evolution.
-
-### 03. Quantum Laboratory
-
-A dedicated computational research domain for exploring selected quantum phenomena relevant to biological systems.
-
-Potential areas of investigation include:
-
-- Quantum transport and energy transfer.
-- Radical-pair spin dynamics.
-- Quantum tunneling in biochemical reactions.
-- Coherence and decoherence models.
-- Comparisons between classical and quantum-inspired mechanisms.
-
-The objective is to construct mathematically grounded models and investigate their potential functional consequences.
-
-Quantum effects will not be assumed to provide a universal explanation for biological complexity. Their relevance must be evaluated through controlled comparisons and measurable outcomes.
-
-### 04. Evolution Laboratory
-
-A broader environment for investigating evolutionary processes and emergent ecological relationships.
-
-- Genetic variation and inheritance.
-- Mutation and natural selection.
-- Neuroevolution and behavioral adaptation.
-- Coevolution and ecological specialization.
-- Population dynamics and migration.
-- Speciation and extinction.
-- Cooperation, competition, and symbiosis.
-- Social organization and collective behavior.
-
-Complex structures should emerge from the interaction of simpler mechanisms, not from predefined social or ecological templates.
-
-### 05. Scientific Observatory
-
-An integrated environment for observing, analyzing, and reproducing experiments.
-
-The long-term vision includes:
-
-- Multiscale simulation visualization.
-- Organism and lineage inspection.
-- Population and ecological analysis.
-- Communication network visualization.
-- Genetic and evolutionary history.
-- Experiment configuration and comparison.
-- Statistical analysis and data export.
-- Reproducible simulation snapshots.
-
-The observatory is intended to be an investigative instrument, not merely a graphical interface.
-
----
-
-## Architecture
-
-Synesthesia is envisioned as a modular platform with a shared computational foundation and independent experimental domains.
-
-```mermaid
-flowchart TB
-    CORE["SYNESTHESIA CORE"]
-
-    CORE --> ACOUSTIC["Acoustic World"]
-    CORE --> MICROBIAL["Microbial World"]
-    CORE --> QUANTUM["Quantum Laboratory"]
-    CORE --> EVOLUTION["Evolution Laboratory"]
-
-    ACOUSTIC --> OBS["Scientific Observatory"]
-    MICROBIAL --> OBS
-    QUANTUM --> OBS
-    EVOLUTION --> OBS
-
-    OBS --> ANALYSIS["Analysis · Visualization · Reproducibility"]
-```
-
-### Core Principles
-
-| Principle | Purpose |
+| Level | Experimental role |
 |---|---|
-| Determinism | Enable repeatable simulations and comparisons. |
-| Modularity | Keep experimental domains independently extensible. |
-| Reproducibility | Preserve seeds, configurations, and simulation state. |
-| Performance | Support computationally intensive experiments. |
-| Observability | Make internal processes measurable and inspectable. |
-| Scientific integrity | Distinguish hypotheses, model assumptions, and experimental results. |
+| L0 | Baseline acoustic condition |
+| L1 | Simplified acoustic-medium condition |
+| L2 | Wave-based acoustic propagation |
+| L3 | Wave propagation with acoustically active obstacles |
 
-### Current Technical Foundation
+The exact numerical models and calibration procedures are documented through the project's architecture decisions and experimental protocol.
 
-The project is written in **C++20**, using CMake as its build system.
+A critical design requirement is that physical obstacles affect movement and food availability consistently at every level. Only at L3 do they additionally affect acoustic propagation.
 
-Current implementation includes:
+This prevents habitat structure from becoming a confounding variable when comparing L2 and L3.
 
-- Deterministic pseudorandom number generation using xoshiro256**.
-- Fixed-step simulation infrastructure.
-- State hashing and reproducibility tests.
-- A lock-free single-producer, single-consumer queue.
-- Cache-line separation for queue producer and consumer state.
-- Native Win32 window and CPU framebuffer.
-- Windows WASAPI audio output.
-- Audio callback instrumentation and underrun monitoring.
-- Benchmarking infrastructure.
-- Optional AddressSanitizer, UndefinedBehaviorSanitizer, and ThreadSanitizer configurations.
+### What will be measured?
 
-The current `ToyWorld` is a temporary deterministic simulation used to validate the foundation. It is not the final acoustic simulation engine.
+The experiment is designed to investigate:
+
+- Whether acoustic communication emerges under evolutionary pressure.
+- Whether the physical model changes the probability of communication emerging.
+- Whether signals develop different frequency and temporal characteristics.
+- Whether acoustic information improves population fitness.
+- Whether removing the communication channel reduces evolutionary fitness.
+- Whether obstacles change the signals that populations evolve.
+
+A visually convincing simulation is not sufficient evidence of communication.
+
+The project therefore uses information-theoretic measurements, playback experiments, channel ablation, population fitness, and repeated trials across independent random seeds.
 
 ---
 
-## Current Implementation
+## System Overview
 
-**Development stage: Early experimental development**
+Synesthesia is organized around five connected technical areas.
 
-Synesthesia is being developed through incremental engineering phases.
+### 01. Acoustic Medium
 
-### Foundation — Completed
+The environment through which organisms communicate.
 
-- [x] CMake build system.
-- [x] C++20 configuration.
-- [x] Compiler warning configuration.
-- [x] Deterministic xoshiro256** pseudorandom generator.
-- [x] Fixed-step simulation interface.
-- [x] State hashing.
-- [x] Reproducibility testing.
-- [x] SPSC lock-free queue.
-- [x] Benchmarking infrastructure.
-- [x] Optional sanitizer configurations.
-- [x] Initial CI workflow configuration.
+The planned acoustic engine uses a two-dimensional Finite-Difference Time-Domain (FDTD) model.
 
-### Platform and Audio — Implemented, validation ongoing
+Its development includes:
 
-- [x] Native Win32 window.
-- [x] CPU framebuffer.
-- [x] WASAPI shared-mode audio output.
-- [x] Event-driven audio processing.
-- [x] Dedicated audio thread.
-- [x] SPSC audio queue integration.
-- [x] Basic audio playback.
-- [x] Audio callback instrumentation.
-- [ ] One-hour audio stress test without underruns.
-- [ ] Documented latency measurements under sustained load.
+- Acoustic pressure propagation.
+- Fixed-step numerical integration.
+- Reflective boundaries.
+- Internal obstacles.
+- Acoustic diffraction and echoes.
+- Absorbing boundary layers (PML).
+- Point sources and virtual microphones.
+- Anti-aliasing and resampling.
+- Scalar and AVX2 implementations.
 
-### Planned Simulation Development
+The FDTD implementation will be validated against analytical reference cases before being used in evolutionary experiments.
 
-- [ ] Two-dimensional FDTD acoustic wave engine.
-- [ ] Acoustic sensing and signal emission.
-- [ ] Physical environment and fluid coupling.
-- [ ] Artificial organisms and biological processes.
-- [ ] Neural systems and evolutionary algorithms.
-- [ ] Emergent communication experiments.
-- [ ] Extended ecological interactions.
-- [ ] CPU-based 3D software rasterizer.
-- [ ] Scientific observatory and experiment analysis.
+### 02. Artificial Organisms
 
-Features in this section represent development objectives, not existing functionality.
+Organisms will interact with the acoustic environment through simulated perception and sound production.
+
+The planned biological model includes:
+
+- Two spatially separated ears.
+- Multi-band auditory filter banks.
+- Directional acoustic perception.
+- An evolvable sound emitter.
+- Internal energy and hunger states.
+- A compact physical body.
+- Recurrent neural control.
+- Heritable neural and behavioral parameters.
+
+The initial neural architecture is a Continuous-Time Recurrent Neural Network (CTRNN), with a GRU considered as an alternative.
+
+### 03. Neural Systems
+
+Each organism will have an independently evolving recurrent neural controller.
+
+The implementation strategy prioritizes:
+
+1. A scalar reference implementation.
+2. Profiling and memory-access analysis.
+3. SIMD optimization where measurements justify it.
+4. Numerical comparison against the scalar reference.
+5. Quantized variants for performance and precision comparisons.
+
+AVX2 is an optimization target, not an assumption of performance.
+
+### 04. Ecology & Evolution
+
+The environment will introduce selective pressures that make communication potentially useful.
+
+Planned mechanisms include:
+
+- Energy consumption and metabolism.
+- Hunger and survival.
+- Death and reproduction.
+- Mutation and crossover.
+- Unequal access to environmental information.
+- Predators and prey.
+- Energetic cost of vocalization.
+- Spatially separated populations.
+- Migration and acoustic signaling.
+
+The goal is not to script a language or force organisms to cooperate.
+
+The goal is to investigate whether communication can emerge as an adaptive behavior under controlled evolutionary conditions.
+
+### 05. Experimental Observatory
+
+The scientific interface will expose the internal state of the simulation and its experimental results.
+
+Planned instrumentation includes:
+
+- Signal spectrograms across generations.
+- Information-transfer measurements.
+- Playback experiments.
+- Channel-ablation analysis.
+- Population fitness.
+- Ancestry and genealogy.
+- Acoustic interaction graphs.
+- Reproducible experiment configurations.
+
+The observatory is intended to support investigation and verification, not merely presentation.
+
+---
+
+## Physical Model
+
+The physical scale is a fundamental architectural constraint.
+
+For a two-dimensional FDTD acoustic model, numerical stability depends on the relationship between the speed of sound, spatial resolution, and time step.
+
+For a square grid, the Courant condition is:
+
+\[
+\frac{c \Delta t}{\Delta x} \leq \frac{1}{\sqrt{2}}
+\]
+
+At a sampling rate of 44,100 Hz and a nominal speed of sound of 343 m/s, the acoustic distance traveled per time step is approximately 7.8 mm.
+
+A 256 × 256 grid at the corresponding physical scale represents an environment approximately 2.8 m across.
+
+This defines the initial experimental environment as a small physical terrarium inhabited by organisms measuring a few centimeters.
+
+The useful frequency range will not be selected using a rule of thumb alone. Numerical phase-velocity dispersion will be measured across frequencies and directions, and the useful bandwidth will be defined according to the documented error tolerance.
+
+The physical model and its calibration are documented in the project's Architecture Decision Records.
 
 ---
 
 ## Experimental Methodology
 
-Scientific reproducibility is a fundamental design requirement.
+Synesthesia is designed around controlled experiments rather than isolated demonstrations.
 
-The project aims to support experiments that can be repeated under controlled conditions, with comparable initial states and measurable outcomes.
+### Controls
 
-Planned experimental capabilities include:
+Two control conditions are planned:
 
-- Explicit simulation seeds.
-- Reproducible initial conditions.
-- Deterministic execution where supported by the numerical model and execution environment.
-- Controlled environmental parameters.
-- Baseline and control populations.
-- Ablation experiments.
-- Repeated trials across different seeds.
-- Statistical comparisons.
-- Exportable experimental results.
+- **No sensory or emission channel:** organisms do not have the acoustic communication system.
+- **Silent medium:** the channel and neural architecture are present, but organisms cannot emit useful acoustic energy.
 
-For example, acoustic communication experiments could compare populations with functional acoustic channels against populations in which those channels have been disabled.
+The second control helps isolate the effect of information from differences in neural architecture and vocalization cost.
 
-Measurements could include information transfer, survival, reproductive success, behavioral changes, and energetic cost.
+### Primary Comparisons
 
-The purpose is to distinguish genuine adaptation from apparent complexity or coincidental behavior.
+The primary experimental contrasts are:
 
-**Important:** Synesthesia is a computational research platform. Simulation outcomes are evidence about the behavior of a particular model under specified assumptions, not automatic proof of real-world biological mechanisms.
+- L0 versus L2 — effect of wave-based acoustic physics.
+- L2 versus L3 — effect of acoustically active obstacles.
+- L0 through L3 — monotonic trend across the fidelity ladder.
+
+Other comparisons will be treated as secondary analyses.
+
+The population or independent random seed is the unit of analysis, not the individual organism. This avoids treating organisms from the same evolving population as statistically independent observations.
+
+### Evidence of Communication
+
+The presence of a signal must be established using an objective criterion.
+
+Planned measurements include:
+
+- Mutual information between emitted signals and environmental state.
+- Playback experiments using recorded signals.
+- Ablation experiments that disable the communication channel.
+- Population fitness comparisons.
+- Signal frequency, duration, and spectral occupancy.
+- The rate at which communication emerges across experimental conditions.
+
+Signal characteristics will only be analyzed for runs in which the objective emergence criterion is satisfied. The number of successful runs will always be reported.
+
+### Reproducibility
+
+Experimental results should be recoverable from:
+
+- A fixed simulation configuration.
+- A documented random seed.
+- A known source revision.
+- A recorded experimental protocol.
+- Reproducible execution settings.
+
+Confirmation runs will use a separate set of seeds from exploratory and parameter-adjustment runs.
+
+The planned protocol will also include Git tags and SHA-256 hashes of configuration files and confirmation-seed lists. The batch executor is intended to reject confirmation runs when these identifiers do not match the frozen protocol.
 
 ---
 
-## Benchmarks & Testing
+## Current Implementation
 
-The initial engineering foundation has been tested locally using MinGW GCC 16.2.0 on Windows.
+<badge color="success">Foundation verified</badge>
 
-### Automated Tests
+Synesthesia is currently in early experimental development.
 
-| Test | Result |
+The existing codebase establishes the deterministic simulation foundation, native Windows platform layer, and basic audio output.
+
+### Engineering Foundation
+
+- [x] CMake build system.
+- [x] C++20 project configuration.
+- [x] Deterministic xoshiro256** pseudorandom generator.
+- [x] Fixed-step simulation infrastructure.
+- [x] State hashing.
+- [x] Determinism tests.
+- [x] SPSC queue implementation.
+- [x] Benchmarking infrastructure.
+- [x] Native Win32 window.
+- [x] CPU framebuffer.
+- [x] Windows WASAPI audio output.
+- [x] Basic audio playback.
+- [x] Initial CI workflow configuration.
+
+### Verification Status
+
+| Component | Verified status |
 |---|---|
-| `test_config` | PASS |
-| `test_rng` | PASS |
-| `test_determinism` | PASS |
-| `test_spsc` | PASS |
+| Build and automated tests | Linux/GCC and Windows/MinGW |
+| Determinism | Matching reference hash across both environments |
+| SPSC stress tests | ASan and TSan on Linux |
+| Windows SPSC stress | Functional stress testing |
+| Native window and WASAPI | Real executions, zero observed underruns |
+| One-hour audio test | Completed without artificial load |
+| One-hour test under load | Pending |
+| Audio latency | Estimated, not yet measured |
+| GitHub Actions | Workflow written, execution not verified |
+| MSVC | Not yet compiled |
 
-**Result: 4/4 tests passed.**
+The current `ToyWorld` is a temporary deterministic test environment. It will be removed when the FDTD implementation replaces it, with the reference hash updated in the same commit.
 
-Total execution time: 1.69 seconds.
+Features described in the research vision and roadmap are not claimed as implemented.
 
-The determinism test includes one million simulation steps.
+---
 
-### Initial Simulation Benchmark
+## Benchmarks
 
-Measured using `bench_step` in Release configuration.
+The initial benchmark measures the temporary `ToyWorld::step` implementation.
 
 | Metric | Result |
 |---|---:|
@@ -271,146 +297,152 @@ Measured using `bench_step` in Release configuration.
 | p99.9 | 977 ns |
 | Maximum | 1,174 ns |
 
-Benchmark target: `ToyWorld::step`, measured in batches of 100.
+These measurements are an initial engineering baseline, not a benchmark of the future acoustic engine or neural simulation.
 
-This benchmark measures the temporary simulation foundation, not the future FDTD acoustic engine.
+The processor model was not recorded, so the results should not be interpreted as hardware-independent performance claims.
 
-Results are specific to the machine and execution environment used. The processor model was not recorded, so these measurements should not be interpreted as cross-machine performance comparisons.
+Future benchmarks will measure:
 
-### Continuous Integration
+- FDTD cell updates per second.
+- Scalar versus AVX2 performance.
+- Memory bandwidth and cache behavior.
+- Neural update cost per organism.
+- Population scaling.
+- Audio latency percentiles.
+- Audio underruns under sustained load.
+- Headless experiment throughput.
 
-A GitHub Actions workflow is configured with the following intended matrix:
-
-- Linux / GCC
-- Linux / Clang
-- Windows / MSVC
-- macOS / Clang
-- AddressSanitizer and UndefinedBehaviorSanitizer
-- ThreadSanitizer
-
-Cross-platform CI execution has not yet been independently verified.
+Performance decisions will be based on measured results.
 
 ---
 
-## Installation & Build
+## Architecture
 
-### Requirements
+The project is being developed incrementally around a small deterministic foundation.
 
-- CMake 3.20 or newer.
-- A C++20-compatible compiler.
-- Git.
-- Windows for the current native Win32 and WASAPI sandbox.
+```mermaid
+flowchart TB
+    CORE["Deterministic Core"]
 
-The core tests and benchmark are built separately from the Windows-specific platform executable.
+    CORE --> MEDIUM["Acoustic Medium"]
+    CORE --> ORGANISMS["Artificial Organisms"]
+    CORE --> EXPERIMENTS["Experiment Runner"]
 
-### Clone the Repository
+    MEDIUM --> PERCEPTION["Acoustic Perception"]
+    ORGANISMS --> BRAINS["Recurrent Neural Controllers"]
 
-```bash
-git clone https://github.com/FreemanKlay/Synesthesia-Experimental-Proof-Project-Study-Material-.git
+    PERCEPTION --> BRAINS
+    BRAINS --> EMISSION["Sound Emission"]
+    EMISSION --> MEDIUM
 
-cd Synesthesia-Experimental-Proof-Project-Study-Material-
+    ORGANISMS --> ECOLOGY["Ecology & Evolution"]
+    ECOLOGY --> EXPERIMENTS
+    EXPERIMENTS --> ANALYSIS["Scientific Analysis"]
 ```
 
-### Configure and Build
+This diagram represents the intended experimental architecture, not a claim that all components currently exist.
 
-```bash
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+### Engineering Principles
 
-cmake --build build -j
-```
-
-### Run Automated Tests
-
-```bash
-ctest --test-dir build --output-on-failure
-```
-
-### Run the Benchmark
-
-```bash
-./build/bench_step
-```
-
-### Windows / MinGW
-
-For the current Windows development environment using MSYS2 UCRT64:
-
-```powershell
-$env:PATH = "C:\msys64\ucrt64\bin;" + $env:PATH
-$env:CMAKE_GENERATOR = "MinGW Makefiles"
-
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-
-cmake --build build -j
-
-ctest --test-dir build --output-on-failure
-
-.\build\bench_step.exe
-```
-
-### Sanitizer Builds
-
-AddressSanitizer and UndefinedBehaviorSanitizer:
-
-```bash
-cmake -S . -B build-san \
-  -DSYN_SANITIZE=ON \
-  -DCMAKE_BUILD_TYPE=Debug
-
-cmake --build build-san -j
-
-ctest --test-dir build-san --output-on-failure
-```
-
-ThreadSanitizer:
-
-```bash
-cmake -S . -B build-tsan \
-  -DSYN_TSAN=ON \
-  -DCMAKE_BUILD_TYPE=Debug
-
-cmake --build build-tsan -j
-
-ctest --test-dir build-tsan --output-on-failure
-```
-
-Sanitizer availability depends on the compiler and platform.
+| Principle | Application |
+|---|---|
+| Determinism | Repeatable simulation and regression testing |
+| Physical validation | Comparison against analytical reference cases |
+| Modularity | Independent acoustic, neural, and ecological components |
+| Measurement first | Profile before introducing low-level optimizations |
+| Reproducibility | Fixed seeds, configurations, and protocol hashes |
+| Scientific caution | Explicit hypotheses, controls, limitations, and null results |
 
 ---
 
-## Running the Sandbox
+## Development Roadmap
 
-The current Windows sandbox provides the native window and basic audio playback.
+The roadmap is organized around acceptance criteria. Time estimates are secondary to validation.
 
-### Standard Execution
+| Phase | Focus | Status |
+|---|---|---|
+| 0 | Deterministic engineering foundation | Completed |
+| 1 | Native window and audio stability | In progress |
+| 2 | Acoustic medium and L0–L3 | Planned |
+| 3 | Artificial organisms and recurrent brains | Planned |
+| 4 | Ecology, evolution, and pilot experiments | Planned |
+| 5 | Scientific instrumentation and main experiment | Planned |
+| 6 | Coupled wind simulation | Optional |
+| 7 | Scientific HUD and presentation | Planned |
+| 8 | Integration and long-duration robustness | Planned |
 
-```powershell
-.\build\sandbox.exe
-```
+### Phase 1 — Close the Platform Foundation
 
-Opens the window and plays a 440 Hz test tone. Press `ESC` to exit.
+Remaining acceptance criteria:
 
-### Audio Stress Test
+- One-hour audio stress test under artificial CPU load.
+- Machine configuration recorded in the test report.
+- Output latency measured using `IAudioClock::GetPosition`.
+- Latency percentiles documented.
+- Evidence archived in `docs/evidence/fase1/`.
 
-```powershell
-.\build\sandbox.exe --seconds 60 --load 8
-```
+### Phase 2 — Acoustic Medium
 
-Runs for 60 seconds with eight artificial CPU load threads.
+- Introduce the `AcousticMedium` interface.
+- Implement L0 and L1.
+- Implement scalar 2D FDTD for L2.
+- Validate against analytical acoustic cases.
+- Measure numerical dispersion and useful frequency range.
+- Measure FDTD performance at Gate G2.
+- Implement AVX2 with comparison against the scalar reference.
+- Introduce obstacles, PML, point sources, and virtual microphones for L3.
+- Measure the physical behavior of obstacles before fixing the H3 hypothesis.
 
-### Extended Audio Test
+**Acceptance:** analytical tests pass, AVX2 performance is measured, and the 256 × 256 target at 44.1 kHz is evaluated against the two-core budget.
 
-```powershell
-.\build\sandbox.exe --no-window --seconds 3600 --load 8 > soak_audio.txt
-```
+### Phase 3 — Organisms and Brains
 
-Runs an extended audio test without opening the window.
+- Implement auditory filter banks.
+- Introduce sound emission.
+- Add simple organism bodies.
+- Implement scalar CTRNN reference.
+- Profile memory usage and cache behavior.
+- Introduce SIMD and quantized variants where justified.
+- Measure computational cost at Gate G3.
 
-The extended test is intended to evaluate audio stability and underruns under sustained load. Its successful completion must be verified separately before claiming the one-hour acceptance criterion.
+**Acceptance:** optimized neural implementations are compared against the scalar reference, with performance gains and numerical differences documented.
+
+### Phase 4 — Ecology, Evolution, and Pilot
+
+- Implement energy, hunger, and death.
+- Add reproduction, mutation, and crossover.
+- Introduce asymmetric environmental information.
+- Implement vocalization costs.
+- Add physical obstacles consistently across experimental levels.
+- Build headless batch execution.
+- Conduct parameter screening and pilot experiments.
+
+**Acceptance:** at least one configuration demonstrates that the communication-enabled population outperforms both controls and that channel ablation reduces fitness. Failed configurations and adjustments are documented.
+
+### Phase 5 — Instrumentation and Main Experiment
+
+- Implement mutual-information analysis.
+- Add bias correction and permutation-based null testing.
+- Implement playback and ablation experiments.
+- Generate spectrograms across generations.
+- Record ancestry and acoustic interaction graphs.
+- Freeze the experimental protocol.
+- Run confirmation seeds.
+- Produce a technical report of approximately 8–15 pages.
+
+**Acceptance:** the protocol is executed as registered, results are reproducible from seeds and configurations, and limitations are explicitly reported.
+
+### Later Development
+
+Wind coupling, advanced ecological mechanisms, and additional rendering work are conditional on the completion of the primary experiment.
+
+The 3D software rasterizer is no longer on the critical path. It may be revisited if the scientific milestones leave sufficient time.
 
 ---
 
-## Project Structure
+## Repository Structure
+
+The current repository structure reflects the early engineering foundation.
 
 ```text
 Synesthesia/
@@ -440,10 +472,6 @@ Synesthesia/
 │       └── win32_window.cpp
 │
 ├── tests/
-│   ├── test_config.cpp
-│   ├── test_determinism.cpp
-│   ├── test_rng.cpp
-│   └── test_spsc.cpp
 │
 ├── tools/
 │   ├── bench_step.cpp
@@ -453,73 +481,112 @@ Synesthesia/
 └── README.md
 ```
 
-The structure will evolve as additional simulation domains and research tools are implemented.
+The repository will be reorganized as the acoustic and experimental subsystems are introduced. Future directories will be created alongside the corresponding implementations rather than documented as existing prematurely.
 
 ---
 
-## Technical Decisions
+## Build & Run
 
-Important architectural decisions are documented through Architecture Decision Records (ADRs).
+### Requirements
+
+- CMake 3.20 or newer.
+- A C++20-compatible compiler.
+- Git.
+- Windows for the current native Win32 and WASAPI sandbox.
+
+### Clone
+
+```bash
+git clone https://github.com/FreemanKlay/Synesthesia-Experimental-Proof-Project-Study-Material-.git
+
+cd Synesthesia-Experimental-Proof-Project-Study-Material-
+```
+
+### Configure and Build
+
+```bash
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+
+cmake --build build -j
+```
+
+### Run Tests
+
+```bash
+ctest --test-dir build --output-on-failure
+```
+
+### Run Benchmark
+
+```bash
+./build/bench_step
+```
+
+### Windows Sandbox
+
+```powershell
+.\build\sandbox.exe
+```
+
+Opens the native window and plays a 440 Hz test tone. Press `ESC` to exit.
+
+The sandbox also supports an extended audio test:
+
+```powershell
+.\build\sandbox.exe --seconds 60 --load 8
+```
+
+For the current development environment, builds use MSYS2 UCRT64 with MinGW.
+
+---
+
+## Architecture Decision Records
+
+Important engineering decisions are documented in short Architecture Decision Records.
+
+Current records:
 
 - [ADR-0001 — Physical Scale and CFL Stability](docs/adr/0001-physical-scale.md)
-- [ADR-0002 — WASAPI Audio Output and SPSC Queue](docs/adr/0002-audio-output.md)
+- [ADR-0002 — Audio Output and SPSC Queue](docs/adr/0002-audio-output.md)
 
-These documents explain the reasoning behind important engineering decisions, including physical simulation scale, numerical stability, audio output, and real-time processing constraints.
+Planned records:
 
----
+- ADR-0003 — Acoustic Fidelity Ladder, Calibration, Boundaries, and Obstacles.
+- ADR-0004 — Useful Frequency, Emission Bandwidth, and Ear Separation.
+- ADR-0005 — Headless Execution and Computational Budget.
+- ADR-0006 — Experimental Preregistration and Reproducibility.
 
-## Roadmap
-
-Synesthesia is intended to evolve through independently testable milestones.
-
-| Stage | Direction | Status |
-|---|---|---|
-| 00 | Engineering foundation | Completed |
-| 01 | Native platform and audio | In progress |
-| 02 | Acoustic wave simulation | Planned |
-| 03 | Physical environment and biological foundations | Planned |
-| 04 | Organisms, neural systems, and evolution | Planned |
-| 05 | Communication and ecological interactions | Planned |
-| 06 | Scientific visualization and analysis | Planned |
-| 07 | Multidomain research environments | Long-term vision |
-
-The roadmap is evolutionary rather than fixed. Each stage should establish a reliable foundation before the next major research domain is introduced.
+Each ADR is intended to remain concise and focused on a specific engineering decision.
 
 ---
 
-## Research Principles
+## Scope & Scientific Limitations
 
-Synesthesia follows a few central principles:
+Synesthesia is intentionally focused on acoustic communication and evolutionary dynamics.
 
-**Emergence over scripting**
+Molecular chemistry, protocell simulation, quantum biology, and cross-substrate evolution are outside the scope of the primary repository and its central experiment.
 
-Complex behaviors should arise from interactions and evolutionary pressures rather than predefined outcomes.
+The project does not claim to:
 
-**Measurement over appearance**
+- Reproduce the origin of life.
+- Demonstrate that artificial organisms possess biological intelligence.
+- Prove that a particular communication system will emerge.
+- Establish universal biological principles from one simulation.
+- Guarantee open-ended evolution or increasing complexity.
 
-Visually convincing behavior is not sufficient evidence of intelligence, adaptation, communication, or biological organization.
+Its purpose is narrower and more testable: to investigate how acoustic-medium fidelity affects the emergence and evolution of communication under specified computational and ecological conditions.
 
-**Reproducibility over isolated demonstrations**
-
-Experiments should be repeatable and their results independently inspectable.
-
-**Scientific caution over extraordinary claims**
-
-Models must distinguish established mechanisms, simplifying assumptions, and speculative hypotheses.
-
-**Modularity over monolithic design**
-
-Different physical and biological scales require appropriate mathematical models and independent simulation domains.
+All results must be interpreted within the assumptions, scale, numerical limitations, and experimental design of the model.
 
 ---
 
 ## Contributing
 
-Synesthesia is currently an experimental personal research project.
+Synesthesia is currently an experimental research project under active development.
 
-As its architecture and development practices mature, contribution guidelines will be introduced for external developers and researchers.
+Technical feedback, reproducible bug reports, numerical validation suggestions, and discussions about the experimental methodology are welcome.
 
-Technical discussions, well-documented issues, reproducible bug reports, and constructive research suggestions are welcome.
+Contribution guidelines will be expanded as the architecture stabilizes.
 
 ---
 
@@ -527,12 +594,12 @@ Technical discussions, well-documented issues, reproducible bug reports, and con
 
 A license has not yet been selected.
 
-Until a license is added to the repository, the project's source code remains subject to applicable default copyright protections. Public availability does not automatically grant permission to reuse, modify, or redistribute it.
+Until a license is added, the source code remains subject to applicable default copyright protections. Public availability does not automatically grant permission to reuse, modify, or redistribute the project.
 
 ---
 
 <p align="center">
   <strong>SYNESTHESIA</strong>
   <br>
-  <sub>Exploring the computational foundations of artificial life.</sub>
+  <sub>Understanding what evolves when sound becomes a physical constraint.</sub>
 </p>
